@@ -1,0 +1,18 @@
+<fmproject name="Cineplex">
+
+	<lineedit>
+		<label>OTA Path</label>
+		<arg>-Dmanual.ota.path={1}</arg>
+		<default>el</default>
+	</lineedit>
+	
+	<checkbox>
+		<label>Upload to OTA</label>
+		<arg>manualota</arg>
+		<default>true</default>
+	</checkbox>
+	
+	<checkbox>
+		<label>Clean target directory</label>
+	</checkbox>
+</fmproject>
