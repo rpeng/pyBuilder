@@ -1,5 +1,4 @@
 <fmproject>
-
 	<default>
 		<project>Canoe</project>
 		<env>ant</env>
@@ -46,6 +45,19 @@
 		<arg>-Dapplication={0}</arg>
 		<items>
 			<item>
+				<label>All</label>
+				<arg>canoe</arg>
+				<arg>24h</arg>
+				<arg>calgarysun</arg>
+				<arg>edmontonsun</arg>
+				<arg>journaldemontreal</arg>
+				<arg>journaldequebec</arg>
+				<arg>londonfreepress</arg>
+				<arg>ottawasun</arg>
+				<arg>torontosun</arg>
+				<arg>winnipegsun</arg>
+			</item>
+			<item>
 				<label>Canoe</label>
 				<arg>canoe</arg>
 			</item>
@@ -65,14 +77,33 @@
 				<label>Journal de Montreal</label>
 				<arg>journaldemontreal</arg>
 			</item>
+			<item>
+				<label>Journal de Quebec</label>
+				<arg>journaldequebec</arg>
+			</item>
+			<item>
+				<label>London Free Press</label>
+				<arg>londonfreepress</arg>
+			</item>
+			<item>
+				<label>Ottawa Sun</label>
+				<arg>ottawasun</arg>
+			</item>
+			<item>
+				<label>Toronto Sun</label>
+				<arg>torontosun</arg>
+			</item>
+			<item>
+				<label>Winnipeg Sun</label>
+				<arg>winnipegsun</arg>
+			</item>
 		</items>
-		<default>Low</default>
 	</list>
 	
 	<lineedit>
 		<label>OTA Path</label>
 		<arg>-Dota.manual.path={0}</arg>
-		<default>./rp/test</default>
+		<default>./rp/prod</default>
 	</lineedit>
 
 	<checkbox>
