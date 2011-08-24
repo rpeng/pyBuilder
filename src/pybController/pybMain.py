@@ -21,6 +21,7 @@ class pybWidgets():
     
     # instance methods
     def generateLayout(self,descriptor,verticalLayout):
+        self.defaults = {} # container of all 'default' descriptors
         self.wList = [] # contains all of the widgets
         self._layout = verticalLayout
         self._descriptor = descriptor
@@ -30,6 +31,9 @@ class pybWidgets():
                 widget = pybWidgets.switch[element.tag](element)
                 verticalLayout.addLayout(widget.getLayout())
                 self.wList.append(widget)
+            elif element.tag == "default": # default value handler
+                for i in element:
+                    self.defaults[i.tag]=i.text
         
     def __init__(self):
         pass

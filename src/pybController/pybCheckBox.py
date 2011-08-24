@@ -1,32 +1,25 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 
-class pybCheckBox():
-    
-    def getLayout(self):
-        return self.layout
+from pybBaseWidget import pybBaseWidget
 
-    def getWidget(self):
-        return self.widget
+class pybCheckBox(pybBaseWidget):
     
     def getArg(self):
-        # TODO
         if self.widget.isChecked():
-            return self.argument
+            return pybBaseWidget.getArg(self)
         return None
     
     def __init__(self,element):
-        # extract our details
-        labelText = element.find("label").text
-        defaultText = element.find("default")
-        self.argument = element.find("arg").text
+        pybBaseWidget.__init__(self, element)
+        
         # create layout
         self.layout = QHBoxLayout()
         self.widget = QCheckBox()
-        label = QLabel(labelText)
+        label = QLabel(self.label)
         # configure
         self.layout.addWidget(label)
         self.layout.addStretch()
         self.layout.addWidget(self.widget)
-        if defaultText is not None and defaultText.text == "true":
+        if self.default is not None and self.default == "true":
             self.widget.setChecked(True)

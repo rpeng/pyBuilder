@@ -1,37 +1,50 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 
-class pybList():
-    
-    def getLayout(self):
-        return self.layout
+from pybBaseWidget import pybBaseWidget
 
-    def getWidget(self):
-        return self.widget
+class pybList(pybBaseWidget):
     
-    def getArg(self):
+    def getArg(self): # needs to override this
         # TODO
-        return self.argument.format(self.labelMap[self.widget.currentText()])
+        argList = []
+        formattedList = []
+        
+        self.listargs = self.labelMap[self.widget.currentText()]["args"]
+        self.listexecute = self.labelMap[self.widget.currentText()]["execs"]
+        
+        for i in self.listargs:
+            formattedList.append(self.args[0].format(i))
+        
+        argList.append((self.ARG_APPEND,formattedList))
+
+        argList.append((self.ARG_EXEC,self.listexecute))
+        
+        return argList
     
     def __init__(self,element):
+        pybBaseWidget.__init__(self, element)
         # extract information
-        labelText = element.find("label").text
         items = element.find("items")
-        self.argument = element.find("arg").text
         self.labelMap = {} # stores (label,arg) pairs
     
         # create layout
         self.layout = QHBoxLayout()
         self.widget = QComboBox()
         
-        label = QLabel(labelText)
+        label = QLabel(self.label)
         
         # configure
         
         for i in items: # extracts label,arg pairs, and stores it
             subLabelText = i.find("label").text
-            subArg = i.find("arg").text
-            self.labelMap[subLabelText] = subArg
+            subArgs = [j.text for j in i.findall("arg")]
+            subExecs = [j.text for j in i.findall("exec")]
+            self.labelMap[subLabelText] = {}
+            
+            self.labelMap[subLabelText]["args"] = subArgs
+            self.labelMap[subLabelText]["execs"] = subExecs
+            
             self.widget.addItem(subLabelText)
             
         self.layout.addWidget(label)

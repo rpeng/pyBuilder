@@ -1,9 +1,22 @@
-<fmproject name="Cineplex">
+<fmproject>
 
+	<default>
+		<project>Canoe</project>
+		<env>ant</env>
+	</default>
+	
 	<list>
 		<label>Build</label>
-		<arg>-Ddevice={0}</arg>
+		<arg>-lib build/lib -Ddevice={0}</arg>
 		<items>
+			<item>
+				<label>All</label>
+				<arg>high</arg>
+				<arg>low</arg>
+				<arg>touch</arg>
+				<arg>hightouch</arg>
+				<arg>veryhigh</arg>
+			</item>
 			<item>
 				<label>High</label>
 				<arg>high</arg>
@@ -12,38 +25,66 @@
 				<label>Low</label>
 				<arg>low</arg>
 			</item>
+			<item>
+				<label>Touch</label>
+				<arg>touch</arg>
+			</item>
+			<item>
+				<label>High Touch</label>
+				<arg>hightouch</arg>
+			</item>
+			<item>
+				<label>Very High</label>
+				<arg>veryhigh</arg>
+			</item>
+		</items>
+		<default>Low</default>
+	</list>
+	
+	<list>
+		<label>Application</label>
+		<arg>-Dapplication={0}</arg>
+		<items>
+			<item>
+				<label>Canoe</label>
+				<arg>canoe</arg>
+			</item>
+			<item>
+				<label>24h</label>
+				<arg>24h</arg>
+			</item>
+			<item>
+				<label>Calgary Sun</label>
+				<arg>calgarysun</arg>
+			</item>
+			<item>
+				<label>Edmonton Sun</label>
+				<arg>edmontonsun</arg>
+			</item>
+			<item>
+				<label>Journal de Montreal</label>
+				<arg>journaldemontreal</arg>
+			</item>
 		</items>
 		<default>Low</default>
 	</list>
 	
 	<lineedit>
 		<label>OTA Path</label>
-		<arg>-Dmanual.ota.path={0}</arg>
-		<default>./rp</default>
+		<arg>-Dota.manual.path={0}</arg>
+		<default>./rp/test</default>
 	</lineedit>
-	
+
 	<checkbox>
-		<label>Clean target directory</label>
-		<arg>clean</arg>
+		<label>Update project files</label>
+		<exec>svn up</exec>
 		<default>true</default>
 	</checkbox>
-
+	
 	<checkbox>
 		<label>Upload to OTA</label>
 		<arg>manualota</arg>
 		<default>true</default>
 	</checkbox>
-	
-	<checkbox>
-		<label>Sign</label>
-		<arg>sign</arg>
-	</checkbox>
-	
-	<checkbox>
-		<label>Say hi to Jane</label>
-		<arg>hijane</arg>
-		<default>true</default>
-	</checkbox>
-	
 
 </fmproject>

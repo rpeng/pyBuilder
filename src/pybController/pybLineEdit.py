@@ -1,31 +1,23 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 
-class pybLineEdit():
-    
-    def getLayout(self):
-        return self.layout
+from pybController.pybBaseWidget import pybBaseWidget
 
-    def getWidget(self):
-        return self.widget
+class pybLineEdit(pybBaseWidget):
     
-    def getArg(self):
-        # TODO
-        return self.argument.format(self.widget.text())
+    def formatArg(self,arg):
+        return arg.format(self.widget.text())
+        
     
     def __init__(self,element):
-        # extract information
-        labelText = element.find("label").text
-        defaultText = element.find("default")
-        self.argument = element.find("arg").text
-        
+        pybBaseWidget.__init__(self, element)
         # create layout
         self.layout = QHBoxLayout()
-        if defaultText is not None:
-            self.widget = QLineEdit(defaultText.text)
+        if self.default is not None:
+            self.widget = QLineEdit(self.default)
         else:
-            self.widget = QLineEdit
-        label = QLabel(labelText)
+            self.widget = QLineEdit()
+        label = QLabel(self.label)
         
         # configure
         
