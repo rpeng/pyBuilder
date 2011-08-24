@@ -1,11 +1,33 @@
 <fmproject name="Cineplex">
 
+	<list>
+		<label>Build</label>
+		<arg>-Ddevice={0}</arg>
+		<items>
+			<item>
+				<label>High</label>
+				<arg>high</arg>
+			</item>
+			<item>
+				<label>Low</label>
+				<arg>low</arg>
+			</item>
+		</items>
+		<default>Low</default>
+	</list>
+	
 	<lineedit>
 		<label>OTA Path</label>
-		<arg>-Dmanual.ota.path={1}</arg>
-		<default>el</default>
+		<arg>-Dmanual.ota.path={0}</arg>
+		<default>./rp</default>
 	</lineedit>
 	
+	<checkbox>
+		<label>Clean target directory</label>
+		<arg>clean</arg>
+		<default>true</default>
+	</checkbox>
+
 	<checkbox>
 		<label>Upload to OTA</label>
 		<arg>manualota</arg>
@@ -13,6 +35,15 @@
 	</checkbox>
 	
 	<checkbox>
-		<label>Clean target directory</label>
+		<label>Sign</label>
+		<arg>sign</arg>
 	</checkbox>
+	
+	<checkbox>
+		<label>Say hi to Jane</label>
+		<arg>hijane</arg>
+		<default>true</default>
+	</checkbox>
+	
+
 </fmproject>
